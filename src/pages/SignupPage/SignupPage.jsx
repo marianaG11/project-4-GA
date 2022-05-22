@@ -103,7 +103,6 @@ export default function SignUpPage(props) {
            required
          />
          <Form.TextArea
-           label="bio"
            name="bio"
            placeholder="List your goals here..."
            onChange={handleChange}
@@ -116,7 +115,7 @@ export default function SignUpPage(props) {
              onChange={handleFileInput}
            />
          </Form.Field>
-         <Button type="submit" className="btn">
+         <Button type="submit" className="btn" color="red">
            Signup
          </Button>
        </Segment>

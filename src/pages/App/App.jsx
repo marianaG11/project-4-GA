@@ -5,6 +5,10 @@ import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 
+
+
+
+
 function App() {
   //grab the user from localStorage and set the state
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
