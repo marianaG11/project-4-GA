@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require("uuid");
 const S3 = require("aws-sdk/clients/s3");
-const s3 = new S3(); // initialize the construcotr
+const s3 = new S3(); // initialize the constructor
 // now s3 can crud on our s3 buckets
 
 module.exports = {
@@ -12,26 +12,24 @@ module.exports = {
 };
 
 function signup(req, res) {
-  console.log(req.body, req.file);
+  console.log(req.body, req.file, 'req.body and req.file');
 
-  //////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////////
-
-  // FilePath unique name to be saved to our butckt
+  // FilePath unique name to be saved to our bucket
   const filePath = `${uuidv4()}/${req.file.originalname}`;
   const params = {
     Bucket: process.env.BUCKET_NAME,
-    Key: filePath,
-    Body: req.file.buffer,
+    Key: filePath, //filePath we are generating with the unique name
+    Body: req.file.buffer, //body is the buffer of the file image
   };
-  //your bucket name goes where collectorcat is
-  //////////////////////////////////////////////////////////////////////////////////
+ 
+
   s3.upload(params, async function (err, data) {
     console.log(data, "from aws"); // data.Location is our photoUrl that exists on aws
     const user = new User({ ...req.body, photoUrl: data.Location });
     try {
       await user.save();
+      //sending back the JWT token created to verify the user, back to the client
+      //to be stored and sent with every request
       const token = createJWT(user); // user is the payload so this is the object in our jwt
       res.json({ token });
     } catch (err) {
@@ -39,8 +37,8 @@ function signup(req, res) {
       res.status(400).json(err);
     }
   });
-  //////////////////////////////////////////////////////////////////////////////////
-}
+ 
+};
 
 async function login(req, res) {
   try {
@@ -59,7 +57,7 @@ async function login(req, res) {
   } catch (err) {
     return res.status(401).json(err);
   }
-}
+};
 
 /*----- Helper Functions -----*/
 
@@ -69,4 +67,4 @@ function createJWT(user) {
     SECRET,
     { expiresIn: "24h" }
   );
-}
+};

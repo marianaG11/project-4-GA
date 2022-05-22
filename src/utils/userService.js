@@ -4,6 +4,7 @@ const BASE_URL = "/api/users/";
 
 // NOTE THIS IS configured to send of a multi/part form request
 // aka photo
+//if you dont want to send over photos, remove it and send over JSON
 function signup(user) {
   return (
     fetch(BASE_URL + "signup", {

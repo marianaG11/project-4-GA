@@ -3,12 +3,14 @@ const bcrypt = require("bcrypt");
 
 const SALT_ROUNDS = 6;
 
+//the login function and sign up function are configured to read the email and password
 const userSchema = new mongoose.Schema(
   {
     username: { type: String, required: true, lowercase: true, unique: true },
     email: { type: String, required: true, lowercase: true, unique: true },
-    password: String,
+    password: { type: String, required: true},
     photoUrl: String, // string from aws!
+    bio: String
   },
   {
     timestamps: true,
