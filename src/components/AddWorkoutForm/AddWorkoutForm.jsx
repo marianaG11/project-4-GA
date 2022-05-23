@@ -39,7 +39,7 @@ export default function AddPostForm(props){
         
             <Form  autoComplete="off" onSubmit={handleSubmit}>
             
-              <Form.Input
+              <Form.TextArea
                   className="form-control"
                   name="caption"
                   value={state.caption}

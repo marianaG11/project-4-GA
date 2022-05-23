@@ -4,15 +4,21 @@ import Sidebar from '../../components/Sidebar/Sidebar';
 import AddWorkoutForm from '../../components/AddWorkoutForm/AddWorkoutForm'; 
 import * as workoutsAPI from '../../utils/workoutApi';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loading from "../../components/Loader/Loader";
+import { Grid } from "semantic-ui-react";
 
 
 export default function Home({user, handleLogout}){
   const [workouts, setWorkouts] = useState([]);
   console.log(workoutsAPI, 'this is workoutsAPI');
-  const [posts, setPosts] = useState([]); // <- likes are inside of the each post in the posts array
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
     
+
+
+
+  //set up  utility function in handleAddWorkout in the home component
+  //holds state that contains all the workouts
   // // C create in Crud
   // // we invoke this function in addPost component when the submit button on our form is clicked
   // // so we need to pass it as a prop
@@ -24,7 +30,7 @@ export default function Home({user, handleLogout}){
       // the server, we then want to set it in state
       console.log(data, data.workout,  " this is response from the server, in handleAddWorkout");
       console.log(workout);
-      setPosts([data.workout, ...workouts]);
+      setWorkouts([data.workout, ...workouts]);
       // setLoading(false);
     } catch (err) {
       console.log(err);
@@ -32,20 +38,85 @@ export default function Home({user, handleLogout}){
     }
   }
 
-  //set up  utility function in handleAddWorkout in the home component
-  //holds state that contains all the workouts
-  // async function handleAddWorkout(workout){
-   
-  //   const data = await workoutsAPI.create(workout);
-  //   console.log(data)
-  // }
+
+  // R read in crud
+  async function getWorkouts() {
+    try {
+      const data = await workoutsAPI.getAll();
+      console.log(data, " this is data,");
+      setWorkouts([...data.workouts]);
+      setLoading(false);
+    } catch (err) {
+      console.log(err.message, " this is the error");
+      setError(err.message);
+    }
+  }
+
+  // useEffect runs once
+  // the component is first rendered (whenever you first view the component)
+  // Component Lifecycle in react
+  useEffect(() => {
+    getWorkouts();
+  }, []);
 
 
+
+  if (error) {
     return (
-        <>
-        <Sidebar />
-        <AddWorkoutForm handleAddWorkout={handleAddWorkout}/>
-        <WorkoutGallery />
-        </>
-    )
+      <>
+        <Sidebar handleLogout={handleLogout} user={user}/>
+        <ErrorMessage error={error} />;
+      </>
+    );
+  }
+
+  if (loading) {
+    return (
+      <>
+        <Sidebar handleLogout={handleLogout} user={user}/>
+        <Loading />
+      </>
+    );
+  } 
+
+  return (
+    <Grid centered>
+      <Grid.Row>
+        <Grid.Column>
+          <Sidebar handleLogout={handleLogout} user={user}/>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <AddWorkoutForm handleAddWorkout={handleAddWorkout} />
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <WorkoutGallery
+            workouts={workouts}
+            numPhotosCol={1}
+            isProfile={false}
+            loading={loading}
+            // addLike={addLike}
+            // removeLike={removeLike}
+            user={user}
+          />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+  );
 }
+
+
+
+
+
+    // return (
+    //     <>
+    //     <Sidebar />
+    //     <AddWorkoutForm handleAddWorkout={handleAddWorkout}/>
+    //     <WorkoutGallery />
+    //     </>
+    // )
+// }
