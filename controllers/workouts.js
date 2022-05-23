@@ -1,4 +1,4 @@
-const Todo = require('../models/Todo');
+const Workout = require('../models/Workout');
 const S3 = require('aws-sdk/clients/s3');
 const { v4: uuidv4 } = require('uuid');
 
@@ -16,12 +16,12 @@ function create(req, res){
         const params = {Bucket: process.env.BUCKET_NAME, Key: filePath, Body: req.file.buffer};
         s3.upload(params, async function(err, data){
 			console.log(err, ' from aws')
-            const todo = await Todo.create({caption: req.body.caption, user: req.user, photoUrl: data.Location});
-            console.log(todo)
-			// make sure the post we're sending back has the user populated
-			await todo.populate('user');
+            const workout = await Workout.create({caption: req.body.caption, user: req.user, photoUrl: data.Location});
+            console.log(workout)
+			// make sure the workout we're sending back has the user populated
+			await workout.populate('user');
 		
-            res.status(201).json({todo: todo})
+            res.status(201).json({workout: workout})
         })
     } catch(err){
         console.log(err)
@@ -31,11 +31,11 @@ function create(req, res){
 
 async function index(req, res){
     try {
-        // this populates the user when you find the posts
+        // this populates the user when you find the workouts
         // so you'll have access to the users information 
-        // when you fetch teh posts
-        const todos = await Todo.find({}).populate('user').exec()
-        res.status(200).json({todos})
+        // when you fetch workouts
+        const workouts = await Workout.find({}).populate('user').exec()
+        res.status(200).json({workouts})
     } catch(err){
 
     }

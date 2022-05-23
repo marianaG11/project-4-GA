@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const todosCtrl = require('../../controllers/todos');
-const multer  = require('multer');
+const workoutsCtrl = require('../../controllers/workouts');
+const multer  = require('multer'); //initialize multer
 const upload = multer();
 // /*---------- Public Routes ----------*/
-router.post('/', upload.single('photo'), todosCtrl.create);
-router.get('/', todosCtrl.index);
+router.post('/', upload.single('photo'), workoutsCtrl.create); //then add multer to the middle chain on the function
+//to receive the file 
+
+
+router.get('/', workoutsCtrl.index);
 
 
 /*---------- Protected Routes ----------*/
