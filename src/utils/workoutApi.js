@@ -10,7 +10,10 @@ export function create(workout) {
         'Authorization': 'Bearer ' + tokenService.getToken()
       }
     
-    }).then(res => res.json());
+    }).then(res => {
+        if(res.ok) return res.json();
+        throw new Error('Bad Credentials! CHECK THE SERVER TERMINAL!')
+    })
   }
 
 

@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Workout = require('../models/Workout');
 const jwt = require("jsonwebtoken");
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require("uuid");
@@ -9,6 +10,7 @@ const s3 = new S3(); // initialize the constructor
 module.exports = {
   signup,
   login,
+  profile
 };
 
 function signup(req, res) {
@@ -58,6 +60,26 @@ async function login(req, res) {
     return res.status(401).json(err);
   }
 };
+
+async function profile(req, res){
+  try {
+    //both the user's workouts and their info is returned
+    // First find the user using the params from the request
+    // findOne finds first match, its useful to have unique usernames!
+    const user = await User.findOne({username: req.params.username})
+   //find all the user's workouts
+    if(!user) return res.status(404).json({err: 'User not found'})
+
+    const workouts = await Workout.find({user: user._id}).populate("user").exec();
+    console.log(workouts, ' this is the workouts')
+    res.status(200).json({workouts: workouts, user: user})
+  } catch(err){
+    console.log(err)
+    res.status(400).json({err})
+  }
+}
+
+
 
 /*----- Helper Functions -----*/
 

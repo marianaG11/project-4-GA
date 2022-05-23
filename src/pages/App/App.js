@@ -5,7 +5,7 @@ import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 import Home from '../Home/Home';
-
+import ProfilePage from "../ProfilePage/ProfilePage";
 
 
 function App() {
@@ -36,6 +36,8 @@ function App() {
         <Route
           path="/signup"
           element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
+        />
+        <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout} />}
         />
       </Routes>
     );
