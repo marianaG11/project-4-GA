@@ -4,8 +4,7 @@ import "./App.css";
 import SignupPage from "../SignupPage/SignupPage";
 import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
-import HomePage from "../HomePage/HomePage";
-
+import Home from '../Home/Home';
 
 
 
@@ -28,7 +27,7 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/" element={<HomePage user={user} handleLogout={handleLogout} />}
+        <Route path="/" element={<Home user={user} handleLogout={handleLogout} />}
         />
         <Route
           path="/login"
