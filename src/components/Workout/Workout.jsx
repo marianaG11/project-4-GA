@@ -2,26 +2,27 @@ import React from "react";
 import { Card, Icon, Image } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 function Workout({ workout, isProfile, removeLike, addLike, user }) {
-  // call the addLike or the removeLike when we click on the heart!
 
-  // We need to know if the logged in user has liked this particular post!
-  // we search the array of objects that is post.likes to see if the logged in users
+  // need to know if the logged in user has liked the workout yet
+  //search the array of objects that is workout.likes to see if the logged in users
   // id exists in that array of objects
-//   const likeIndex = post.likes.findIndex(
-//     (like) => like.userId === user.user._id
-//   );
+  const likeIndex = workout.likes.findIndex(
+    (like) => like.userId === user._id
+  );
+    console.log(user)
+  // call the addLike or the removeLike when user clicks on the heart icon
+  const clickHandler =
+    likeIndex > -1 //if findIndex doesn't find an index of the liked object in the workout.likes array, it'll return a -1
+      ? () => removeLike(workout.likes[likeIndex]._id)
+      : () => addLike(workout._id);
 
-//   const clickHandler =
-//     likeIndex > -1
-//       ? () => removeLike(post.likes[likeIndex]._id)
-//       : () => addLike(post._id);
-
-//   // if the logged users id exists, the heart should be red, because the logged in user has liked the post
+//   // if the logged users id exists, the heart should be red; user liked the workout
 //   // and the clicked handler should removeLike
-//   const likeColor = likeIndex > -1 ? "red" : "grey";
+  const likeColor = likeIndex > -1 ? "red" : "grey";
 
-  // if the logged users id doesn't exist in the post.likes array, then the heart should be
-  // grey, because the user hasn't liked the post, and the click handler should be addLike
+  // if the logged users id doesn't exist in the workout.likes array, then the heart should be
+  // grey
+  //the click handler should be addLike
   return (
     <Card key={workout._id} raised>
       {isProfile ? (
@@ -53,10 +54,10 @@ function Workout({ workout, isProfile, removeLike, addLike, user }) {
         <Icon
           name={"heart"}
           size="large"
-        //   color={likeColor}
-        //   onClick={clickHandler}
+          color={likeColor}
+          onClick={clickHandler}
         />
-        {/* {workout.likes.length} Likes */}
+        {workout.likes.length} Likes
       </Card.Content>
     </Card>
   );

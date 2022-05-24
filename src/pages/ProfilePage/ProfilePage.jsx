@@ -9,6 +9,8 @@ import userService from '../../utils/userService';
 import { useParams } from 'react-router-dom'; //useParams hook to figure out the username in the url
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
+import * as likesAPI from "../../utils/likesApi";
+
 
 export default function ProfilePage(props){
   const [workouts, setWorkouts] = useState([]);
@@ -38,7 +40,28 @@ export default function ProfilePage(props){
     getProfile();
   }, []);
 
+  async function addLike(workoutId){
+    try {
+      const data = await likesAPI.create(workoutId)
+      console.log(data, ' <- the response from the server when we make a like');
+      getProfile(); // <- to go get the updated workouts with the like
+    } catch(err){
+      console.log(err)
+      setError(err.message)
+    }
+  };
 
+  async function removeLike(likeId){
+    try {
+      const data = await likesAPI.removeLike(likeId);
+      console.log(data, '<-  this is the response from the server when we remove a like')
+      getProfile()
+      
+    } catch(err){
+      console.log(err);
+      setError(err.message);
+    }
+  };
 
 
   if (error) {
@@ -78,8 +101,8 @@ export default function ProfilePage(props){
             isProfile={true}
             numPhotosCol={4}
             user={props.user}
-            // addLike={addLike}
-            // removeLike={removeLike}
+            addLike={addLike}
+            removeLike={removeLike}
           />
         </Grid.Column>
       </Grid.Row>

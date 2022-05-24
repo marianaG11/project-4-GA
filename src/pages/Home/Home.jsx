@@ -6,15 +6,38 @@ import * as workoutsAPI from '../../utils/workoutApi';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
 import { Grid } from "semantic-ui-react";
-
+import * as likesAPI from "../../utils/likesApi";
 
 export default function Home({user, handleLogout}){
   const [workouts, setWorkouts] = useState([]);
   console.log(workoutsAPI, 'this is workoutsAPI');
+  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-    
+  
 
+  async function addLike(workoutId){
+    try {
+      const data = await likesAPI.create(workoutId)
+      console.log(data, 'response from the server when we make a like');
+      getWorkouts(); // gets updated workouts w/ likes; fetches the updated docs from DB
+    } catch(err){
+      console.log(err)
+      setError(err.message)
+    }
+  }
+
+  async function removeLike(likeId){
+    try {
+      const data = await likesAPI.removeLike(likeId);
+      console.log(data, 'response from the server when we remove a like')
+      getWorkouts();
+      
+    } catch(err){
+      console.log(err);
+      setError(err.message);
+    }
+  }
 
 
   //set up  utility function in handleAddWorkout in the home component
@@ -60,7 +83,6 @@ export default function Home({user, handleLogout}){
   }, []);
 
 
-
   if (error) {
     return (
       <>
@@ -98,8 +120,8 @@ export default function Home({user, handleLogout}){
             numPhotosCol={1}
             isProfile={false}
             loading={loading}
-            // addLike={addLike}
-            // removeLike={removeLike}
+            addLike={addLike}
+            removeLike={removeLike}
             user={user}
           />
         </Grid.Column>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Dimmer, Segment, Image  } from 'semantic-ui-react'
+import { Card, Dimmer, Segment, Image  } from 'semantic-ui-react';
 import Workout from '../Workout/Workout';
 import Loader from '../Loader/Loader';
 
