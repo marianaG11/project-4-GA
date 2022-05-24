@@ -12,7 +12,7 @@ export default function SignUpPage(props) {
     username: '', 
     email: '',
     password: '', 
-    passwordConfirm: '', 
+    passwordConf: '', 
     bio: ''
   }); 
 
@@ -66,8 +66,8 @@ export default function SignUpPage(props) {
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
    <Grid.Column style={{ maxWidth: 450 }}>
      <Header as="h2" color="red" textAlign="center">
-       <h1>Start Tracking Your Workouts With Daily</h1>
-       <Image src="https://www.kindpng.com/picc/m/107-1079056_calendar-png-vector-circle-calendar-icon-png-transparent.png" /> Sign Up
+      Start Tracking Your Workouts With Daily
+       <Image src="https://www.kindpng.com/picc/m/107-1079056_calendar-png-vector-circle-calendar-icon-png-transparent.png" /> 
      </Header>
      <Form autoComplete="off" onSubmit={handleSubmit}>
        <Segment stacked>
