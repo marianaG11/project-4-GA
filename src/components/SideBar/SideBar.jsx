@@ -1,14 +1,66 @@
-import React from 'react';
+// import React from 'react';
 
-import { Header, Segment} from 'semantic-ui-react';
+// import { Header, Segment} from 'semantic-ui-react';
 
 
-export default function Sidebar(){
+// export default function Sidebar(){
+//     return (
+//         <Segment>
+//             <Header as='h2' >
+//               This is the HEADER!
+//             </Header>
+//         </Segment>
+//     )
+// }
+
+// import React from 'react'
+// import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+
+import React, { Component } from 'react'
+import { Menu, Segment, Header, Image } from 'semantic-ui-react'
+import "./Sidebar.css";
+
+//maybe rename class to a function and delete unused items, but keep the format in return
+
+export default class MenuExampleSecondaryPointing extends Component {
+  state = { activeItem: 'home'}
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name})
+
+  render() {
+    const { activeItem } = this.state
+
     return (
-        <Segment>
-            <Header as='h2' >
-              This is the HEADER!
-            </Header>
-        </Segment>
+      <div>
+        <Header as='h2'>
+            <Image circular  className="image-header" src='https://react.semantic-ui.com/images/avatar/large/patrick.png' /> Patrick
+        </Header>
+        <Menu pointing secondary>
+          <Menu.Item
+            name='home'
+            active={activeItem === 'home'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name='My Profile'
+            active={activeItem === 'messages'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name='Add a Workout'
+            active={activeItem === 'friends'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Menu position='right'>
+            <Menu.Item
+              name='logout'
+              active={activeItem === 'logout'}
+              onClick={this.handleItemClick}
+            />
+          </Menu.Menu>
+        </Menu>
+      </div>
     )
+  }
 }
+

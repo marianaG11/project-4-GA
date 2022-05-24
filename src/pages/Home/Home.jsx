@@ -7,6 +7,8 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
 import { Grid } from "semantic-ui-react";
 import * as likesAPI from "../../utils/likesApi";
+import "./Home.css";
+
 
 export default function Home({user, handleLogout}){
   const [workouts, setWorkouts] = useState([]);
@@ -109,7 +111,7 @@ export default function Home({user, handleLogout}){
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ maxWidth: 550 }}>
           <AddWorkoutForm handleAddWorkout={handleAddWorkout} />
         </Grid.Column>
       </Grid.Row>
@@ -128,17 +130,4 @@ export default function Home({user, handleLogout}){
       </Grid.Row>
     </Grid>
   );
-}
-
-
-
-
-
-    // return (
-    //     <>
-    //     <Sidebar />
-    //     <AddWorkoutForm handleAddWorkout={handleAddWorkout}/>
-    //     <WorkoutGallery />
-    //     </>
-    // )
-// }
+};
