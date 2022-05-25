@@ -6,6 +6,8 @@ import LoginPage from "../LoginPage/LoginPage";
 import userService from "../../utils/userService";
 import Home from '../Home/Home';
 import ProfilePage from "../ProfilePage/ProfilePage";
+import WorkoutDetailsPage from "../WorkoutDetailsPage/WorkoutDetailsPage";
+import AddWorkoutPage from "../AddWorkoutPage/AddWorkoutPage";
 
 
 function App() {
@@ -39,6 +41,9 @@ function App() {
         />
         <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout} />}
         />
+        {/* change later on to be pass in the workout id before /details */}
+        <Route path="/details" element={<WorkoutDetailsPage/>} />
+        <Route path="/Add" element={<AddWorkoutPage />} />
       </Routes>
     );
   };

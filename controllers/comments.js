@@ -2,7 +2,7 @@ const Workout = require('../models/Workout');
  
 module.exports = {
     createComment
-};
+}
  
  
 async function createComment(req, res){
@@ -15,4 +15,4 @@ async function createComment(req, res){
     } catch(err){
         res.status(400).json({err})
     }
-};
+}

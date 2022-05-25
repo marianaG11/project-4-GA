@@ -6,9 +6,8 @@ const likesSchema = mongoose.Schema({
 });
 
 const commentsSchema = mongoose.Schema({
-  username: String,
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  photoUrl: String
+  text: String,
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
 }, {
   timestamps: true
 });

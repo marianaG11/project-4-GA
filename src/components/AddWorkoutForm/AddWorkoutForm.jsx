@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Grid, Header, Image,  Segment } from 'semantic-ui-react';
 
 
-export default function AddPostForm(props){
+export default function AddWorkoutForm(props){
   const [selectedFile, setSelectedFile] = useState('')
   const [state, setState] = useState({
     caption: ''
