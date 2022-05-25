@@ -8,7 +8,7 @@ import Loading from "../../components/Loader/Loader";
 import { Grid } from "semantic-ui-react";
 import * as likesAPI from "../../utils/likesApi";
 import "./Home.css";
-
+import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
 
 export default function Home({user, handleLogout}){
   const [workouts, setWorkouts] = useState([]);
@@ -116,10 +116,10 @@ export default function Home({user, handleLogout}){
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <Grid.Column style={{ maxWidth: 450 }}>
+        <Grid.Column style={{ maxWidth: 750 }}>
           <WorkoutGallery
             workouts={workouts}
-            numPhotosCol={1}
+            numPhotosCol={3}
             isProfile={false}
             loading={loading}
             addLike={addLike}

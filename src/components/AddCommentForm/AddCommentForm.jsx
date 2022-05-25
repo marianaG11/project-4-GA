@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { Button, Comment, Form, Header } from 'semantic-ui-react';
 export default function AddCommentForm(props){
     const [selectedFile, setSelectedFile] = useState('');
     const [state, setState] = useState({
@@ -22,5 +22,11 @@ export default function AddCommentForm(props){
         //what else is needed here
     }
  
- 
+    return (
+    <Form reply>
+      <Form.TextArea />
+      <Button content='Add Comment' labelPosition='left' icon='edit' primary />
+    </Form>
+
+    )
 };
