@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid, Image, Segment } from "semantic-ui-react";
 import { useState, useEffect } from 'react';
 import ProfileDisplay from "../../components/ProfileDisplay/ProfileDisplay";
-import Sidebar from "../../components/Sidebar/Sidebar";
+import HeaderNav from "../../components/HeaderNav/HeaderNav";
 import WorkoutGallery from "../../components/WorkoutGallery/WorkoutGallery";
 import userService from '../../utils/userService';
 import { useParams } from 'react-router-dom'; //useParams hook to figure out the username in the url
@@ -67,7 +67,7 @@ export default function ProfilePage(props){
   if (error) {
     return (
       <>
-        <Sidebar handleLogout={props.handleLogout} user={props.user}/>
+        <HeaderNav handleLogout={props.handleLogout} user={props.user}/>
         <ErrorMessage error={error} />;
       </>
     );
@@ -76,7 +76,7 @@ export default function ProfilePage(props){
   if (loading) {
     return (
       <>
-        <Sidebar handleLogout={props.handleLogout} user={props.user}/>
+        <HeaderNav handleLogout={props.handleLogout} user={props.user}/>
         <Loading />
       </>
     );
@@ -86,7 +86,7 @@ export default function ProfilePage(props){
     <Grid>
       <Grid.Row>
         <Grid.Column>
-          <Sidebar handleLogout={props.handleLogout} user={props.user}/>
+          <HeaderNav handleLogout={props.handleLogout} user={props.user}/>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>

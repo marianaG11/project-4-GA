@@ -2,7 +2,7 @@
 import React from 'react';
 import { Menu, Segment, Header, Image, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import "./Sidebar.css";
+import "./HeaderNav.css";
  
  
 // //maybe rename class to a function and delete unused items, but keep the format in return
@@ -49,7 +49,7 @@ import "./Sidebar.css";
 //   }
 // }
  
-export default function Sidebar({user, handleLogout, workout}){
+export default function HeaderNav({user, handleLogout, workout}){
     return(
      <div>
          <Header as='h2'>

@@ -1,7 +1,7 @@
 
 import { Grid } from "semantic-ui-react";
 import React, {useState, useEffect} from 'react'; 
-import Sidebar from '../../components/Sidebar/Sidebar';
+import HeaderNav from '../../components/HeaderNav/HeaderNav';
 import AddWorkoutForm from '../../components/AddWorkoutForm/AddWorkoutForm'; 
 import * as workoutsAPI from '../../utils/workoutApi';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
@@ -36,7 +36,7 @@ export default function AddWorkoutPage({user, handleLogout}){
       if (error) {
         return (
           <>
-            <Sidebar handleLogout={handleLogout} user={user}/>
+            <HeaderNav handleLogout={handleLogout} user={user}/>
             <ErrorMessage error={error} />;
           </>
         );
@@ -45,7 +45,7 @@ export default function AddWorkoutPage({user, handleLogout}){
       if (loading) {
         return (
           <>
-            <Sidebar handleLogout={handleLogout} user={user}/>
+            <HeaderNav handleLogout={handleLogout} user={user}/>
             <Loading />
           </>
         );
@@ -58,7 +58,7 @@ export default function AddWorkoutPage({user, handleLogout}){
     <Grid centered>
         <Grid.Row>
         <Grid.Column>
-          <Sidebar handleLogout={handleLogout} user={user}/>
+          <HeaderNav handleLogout={handleLogout} user={user}/>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>

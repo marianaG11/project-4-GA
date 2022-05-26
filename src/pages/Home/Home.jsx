@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'; 
 import WorkoutGallery from '../../components/WorkoutGallery/WorkoutGallery';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import HeaderNav from '../../components/HeaderNav/HeaderNav';
 import * as workoutsAPI from '../../utils/workoutApi';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
@@ -88,7 +88,7 @@ export default function Home({user, handleLogout}){
   if (error) {
     return (
       <>
-        <Sidebar handleLogout={handleLogout} user={user}/>
+        <HeaderNav handleLogout={handleLogout} user={user}/>
         <ErrorMessage error={error} />;
       </>
     );
@@ -97,7 +97,7 @@ export default function Home({user, handleLogout}){
   if (loading) {
     return (
       <>
-        <Sidebar handleLogout={handleLogout} user={user}/>
+        <HeaderNav handleLogout={handleLogout} user={user}/>
         <Loading />
       </>
     );
@@ -107,7 +107,7 @@ export default function Home({user, handleLogout}){
     <Grid centered>
       <Grid.Row>
         <Grid.Column>
-          <Sidebar handleLogout={handleLogout} user={user}/>
+          <HeaderNav handleLogout={handleLogout} user={user}/>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react'; 
-import Sidebar from '../../components/Sidebar/Sidebar';
+import HeaderNav from '../../components/HeaderNav/HeaderNav';
 import CommentsDisplay from '../../components/CommentsDisplay.jsx/CommentsDisplay';
 
 export default function WorkoutDetailsPage(){
@@ -10,7 +10,7 @@ export default function WorkoutDetailsPage(){
     
     return (
         <Grid>
-            <Sidebar />
+            <HeaderNav />
             <CommentsDisplay />
         </Grid>
 
