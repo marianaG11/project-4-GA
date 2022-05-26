@@ -7,6 +7,8 @@ const upload = multer();
 router.post('/', upload.single('photo'), workoutsCtrl.create); //then add multer to the middle chain on the function
 //to receive the file 
 
+//details page 
+// router.get('/:id', workoutsCtrl.show);
 
 router.get('/', workoutsCtrl.index);
 

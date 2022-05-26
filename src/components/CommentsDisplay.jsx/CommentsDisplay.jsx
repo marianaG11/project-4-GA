@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; 
 import { Button, Comment, Form, Header } from 'semantic-ui-react';
+import AddCommentForm from '../AddCommentForm/AddCommentForm';
 
 export default function CommentsDisplay({}){
     return(
@@ -16,11 +17,12 @@ export default function CommentsDisplay({}){
           <Comment.Action>Reply</Comment.Action>
         </Comment.Actions>
       </Comment.Content>
-    </Comment> 
-    <Form reply>
-    <Form.TextArea />
-    <Button content='Add Reply' labelPosition='left' icon='edit' primary />
-    </Form>
+    </Comment>
+    {/* <Form reply> */}
+    {/* <Form.TextArea />
+    <Button content='Add Comment' labelPosition='left' icon='edit' primary />
+    </Form> */}
+    <AddCommentForm />
     </Comment.Group>
     )
 };

@@ -7,7 +7,7 @@ const s3 = new S3();
 module.exports = {
     create,
     index
-}
+};
 
 function create(req, res){
     console.log(req.file, req.body, 'this is create method', req.user)
@@ -27,7 +27,7 @@ function create(req, res){
         console.log(err)
         res.json({data: err})
     }
-}
+};
 
 async function index(req, res){
     try {
@@ -39,4 +39,13 @@ async function index(req, res){
     } catch(err){
 
     }
-}
+};
+
+
+// async function show(req, res){
+//     try {
+
+//     }
+// }
+
+

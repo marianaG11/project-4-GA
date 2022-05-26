@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Button, Comment, Form, Header } from 'semantic-ui-react';
+import userService from "../../utils/userService";
+import { useNavigate } from "react-router-dom";
+
+
+
 export default function AddCommentForm(props){
-    const [selectedFile, setSelectedFile] = useState('');
     const [state, setState] = useState({
-        comments: ''
+        comments: '',
+        username: '', //is this needed
     })
  
-    function handleFileInput(e){
-        setSelectedFile(e.target.files[0])
-    };
  
     function handleChange(e){
         setState({
@@ -20,13 +22,20 @@ export default function AddCommentForm(props){
     function handleSubmit(e){
         e.preventDefault()
         //what else is needed here
-    }
+    };
  
     return (
-    <Form reply>
-      <Form.TextArea />
-      <Button content='Add Comment' labelPosition='left' icon='edit' primary />
+    <Form reply autoComplete="off" onSubmit={handleSubmit}>
+      <Form.TextArea
+        type="text"
+        name="comments"
+        value ={state.comments}
+        label="comment"
+        placeholder="What did you think about this workout?"
+        onChange={handleChange}
+      />
+      <Button type="submit" content='Add Comment' labelPosition='left' icon='edit' primary />
     </Form>
 
-    )
+    );
 };

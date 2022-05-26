@@ -11,7 +11,7 @@ async function createComment(req, res){
         const workout = await Workout.findById(req.params.id);
         workout.comments.push({ username: req.user.username, userId: req.user._id});
         await workout.save()
-        res.status(201).json({data: 'a comment was added'})
+        res.status(201).json({data: workout})
     } catch(err){
         res.status(400).json({err})
     }

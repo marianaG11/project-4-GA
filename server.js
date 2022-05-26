@@ -27,6 +27,7 @@ app.use("/api/users", require("./routes/api/users"));
 app.use("/api/workouts", require("./routes/api/workouts"));
 app.use("/api", require("./routes/api/likes"));
 app.use("/api", require("./routes/api/comments"));
+app.use("/api/workout", require("./routes/api/workouts"));
 // "catch all" route
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));

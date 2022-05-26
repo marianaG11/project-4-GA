@@ -14,7 +14,7 @@ export function create(workout) {
         if(res.ok) return res.json();
         throw new Error('Bad Credentials! CHECK THE SERVER TERMINAL!')
     })
-  }
+  };
 
 
 export function getAll() {
@@ -27,4 +27,19 @@ export function getAll() {
       if(res.ok) return res.json();
       throw new Error('Bad Credentials! CHECK THE SERVER TERMINAL!')
     })
-  }
+  };
+
+
+
+export function ShowDetailsPage(workoutId){
+    return fetch(BASE_URL + workoutId, {
+      headers: {
+        Authorization: "Bearer " + tokenService.getToken()
+      }
+  }).then(res => {
+    if(res.ok) return res.json();
+    throw new Error('Bad Credentials! CHECK THE SERVER TERMINAL!')
+  })
+};
+
+

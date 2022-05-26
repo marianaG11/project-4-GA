@@ -1,25 +1,10 @@
-// import React from 'react';
 
-// import { Header, Segment} from 'semantic-ui-react';
-
-
-// export default function Sidebar(){
-//     return (
-//         <Segment>
-//             <Header as='h2' >
-//               This is the HEADER!
-//             </Header>
-//         </Segment>
-//     )
-// }
 
 import React from 'react';
-// //import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react';
-
-// import React, { Component } from 'react'
 import { Menu, Segment, Header, Image, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import "./Sidebar.css";
+
 
 // //maybe rename class to a function and delete unused items, but keep the format in return
 
@@ -65,12 +50,18 @@ import "./Sidebar.css";
 //   }
 // }
 
-export default function Sidebar({user, handleLogout}){
+export default function Sidebar({user, handleLogout, workout}){
 	
 	return(
 		<div>
         <Header as='h2'>
-            <Image circular  className="image-header" src='https://react.semantic-ui.com/images/avatar/large/patrick.png' /> Patrick
+            <Image circular  className="image-header" src = {
+              user?.photoUrl
+                ? user?.photoUrl
+                : "https://react.semantic-ui.com/images/wireframe/square-image.png"
+            }
+            avatar/>{user.username}
+
         </Header>
         <Menu pointing secondary>
 		<Link to="/">

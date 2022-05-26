@@ -42,8 +42,8 @@ function App() {
         <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout} />}
         />
         {/* change later on to be pass in the workout id before /details */}
-        <Route path="/details" element={<WorkoutDetailsPage/>} />
-        <Route path="/Add" element={<AddWorkoutPage />} />
+        <Route path="/:id" element={<WorkoutDetailsPage user={user} handleLogout={handleLogout}/>} />
+        <Route path="/Add" element={<AddWorkoutPage user={user} handleLogout={handleLogout}/>} />
       </Routes>
     );
   };

@@ -52,6 +52,11 @@ function Workout({ workout, isProfile, removeLike, addLike, user }) {
       </Card.Content>
       <Card.Content extra textAlign={"right"}>
         <Icon
+          corner = {"top right"}
+          name={"ellipsis vertical"}
+          onClick={clickHandler}
+        />
+        <Icon
           name={"heart"}
           size="large"
           color={likeColor}
