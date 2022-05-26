@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'; 
 import WorkoutGallery from '../../components/WorkoutGallery/WorkoutGallery';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import AddWorkoutForm from '../../components/AddWorkoutForm/AddWorkoutForm'; 
 import * as workoutsAPI from '../../utils/workoutApi';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
