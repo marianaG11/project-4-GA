@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Button, Form, Grid, Header, Image,  Segment } from 'semantic-ui-react';
+import { useNavigate } from 'react-router-dom';
+
 
 
 export default function AddWorkoutForm(props){
+  const navigate = useNavigate();
   const [selectedFile, setSelectedFile] = useState('')
   const [state, setState] = useState({
     caption: ''
@@ -27,7 +30,7 @@ export default function AddWorkoutForm(props){
     formData.append('photo', selectedFile)
     formData.append('caption', state.caption)
     props.handleAddWorkout(formData); //calling the function
-    
+    navigate('/')
   }
 
 
