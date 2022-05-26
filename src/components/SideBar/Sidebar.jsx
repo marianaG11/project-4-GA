@@ -1,11 +1,7 @@
- 
 import React from 'react';
 import { Menu, Segment, Header, Image, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import "./Sidebar.css";
- 
- 
-// //maybe rename class to a function and delete unused items, but keep the format in return
  
 // export default class MenuExampleSecondaryPointing extends Component {
 //   state = { activeItem: 'home'}
