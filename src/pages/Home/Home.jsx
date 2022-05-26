@@ -5,7 +5,7 @@ import AddWorkoutForm from '../../components/AddWorkoutForm/AddWorkoutForm';
 import * as workoutsAPI from '../../utils/workoutApi';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
-import { Grid } from "semantic-ui-react";
+import { Grid, Header, Icon } from "semantic-ui-react";
 import * as likesAPI from "../../utils/likesApi";
 import "./Home.css";
 import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
@@ -111,12 +111,13 @@ export default function Home({user, handleLogout}){
         </Grid.Column>
       </Grid.Row>
       <Grid.Row>
-        <Grid.Column style={{ maxWidth: 550 }}>
-          <AddWorkoutForm handleAddWorkout={handleAddWorkout} />
-        </Grid.Column>
-      </Grid.Row>
-      <Grid.Row>
         <Grid.Column style={{ maxWidth: 750 }}>
+        <Grid.Row>
+        <Header as='h2' icon textAlign='center'>
+          <Icon name='users' circular />
+          <Header.Content>Friends</Header.Content>
+        </Header>
+      </Grid.Row>
           <WorkoutGallery
             workouts={workouts}
             numPhotosCol={3}
