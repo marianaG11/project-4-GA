@@ -51,11 +51,13 @@ function Workout({ workout, isProfile, removeLike, addLike, user }) {
         <Card.Description>{workout.caption}</Card.Description>
       </Card.Content>
       <Card.Content extra textAlign={"right"}>
-        <Icon
+      <Link to={`/workouts/${workout._id}`}>
+	  <Icon
           corner = {"top right"}
           name={"ellipsis vertical"}
           onClick={clickHandler}
         />
+      </Link>
         <Icon
           name={"heart"}
           size="large"

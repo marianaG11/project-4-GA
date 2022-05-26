@@ -8,7 +8,7 @@ router.post('/', upload.single('photo'), workoutsCtrl.create); //then add multer
 //to receive the file 
 
 //details page 
-// router.get('/:id', workoutsCtrl.show);
+router.get('/workouts/:id', workoutsCtrl.show);
 
 router.get('/', workoutsCtrl.index);
 

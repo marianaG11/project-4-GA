@@ -6,7 +6,8 @@ const s3 = new S3();
 
 module.exports = {
     create,
-    index
+    index, 
+    show
 };
 
 function create(req, res){
@@ -37,15 +38,23 @@ async function index(req, res){
         const workouts = await Workout.find({}).populate('user').exec()
         res.status(200).json({workouts})
     } catch(err){
-
+        res.status(400).json({err})
+        console.log(err, "err in index workout controllers")
     }
 };
 
 
-// async function show(req, res){
-//     try {
+async function show(req, res){
+    console.log(req.params.id, "req.params.id in the show workout controllers");
+    try {
+        const workout = await Workout.findById(req.params.id)
+        res.status(200).json({workout})
+        console.log(workout)
+    } catch (err){
+        console.log(err, "err in show workout controllers")
+        res.status(400).json({err})
+    }
 
-//     }
-// }
+};
 
 

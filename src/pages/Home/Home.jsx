@@ -9,6 +9,7 @@ import { Grid, Header, Icon } from "semantic-ui-react";
 import * as likesAPI from "../../utils/likesApi";
 import "./Home.css";
 import AddCommentForm from '../../components/AddCommentForm/AddCommentForm';
+import CommentsDisplay from '../../components/CommentsDisplay.jsx/CommentsDisplay';
 
 export default function Home({user, handleLogout}){
   const [workouts, setWorkouts] = useState([]);
@@ -127,6 +128,14 @@ export default function Home({user, handleLogout}){
             removeLike={removeLike}
             user={user}
           />
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+          <CommentsDisplay />
+        </Grid.Row>
+      <Grid.Row>
+        <Grid.Column>
+          <AddCommentForm />
         </Grid.Column>
       </Grid.Row>
     </Grid>

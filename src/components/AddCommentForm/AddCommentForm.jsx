@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function AddCommentForm(props){
     const [state, setState] = useState({
-        comments: '',
+        comment:'',
         username: '', //is this needed
     })
  
@@ -29,7 +29,7 @@ export default function AddCommentForm(props){
       <Form.TextArea
         type="text"
         name="comments"
-        value ={state.comments}
+        value ={state.comment}
         label="comment"
         placeholder="What did you think about this workout?"
         onChange={handleChange}
