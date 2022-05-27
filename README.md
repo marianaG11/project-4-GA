@@ -18,8 +18,11 @@
 
 ## Technologies Used 
 * React
-* JSX
+* React Semantic UI
 * JavaScript
+* Express.js
+* Jsx
+* AWS
 * MongoDB
 
 ## Getting Started
