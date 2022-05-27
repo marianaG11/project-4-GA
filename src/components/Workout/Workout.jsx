@@ -54,8 +54,8 @@ function Workout({ workout, isProfile, removeLike, addLike, user }) {
       <Link to={`/workouts/${workout._id}`}>
 	  <Icon
           corner = {"top right"}
-          name={"ellipsis vertical"}
-          onClick={clickHandler}
+          name={"comments"}
+          size="large"
         />
       </Link>
         <Icon

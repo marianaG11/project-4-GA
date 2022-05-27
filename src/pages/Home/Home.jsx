@@ -129,14 +129,6 @@ export default function Home({user, handleLogout}){
           />
         </Grid.Column>
       </Grid.Row>
-      <Grid.Row>
-          <CommentsDisplay />
-        </Grid.Row>
-      <Grid.Row>
-        <Grid.Column>
-          <AddCommentForm />
-        </Grid.Column>
-      </Grid.Row>
     </Grid>
   );
 };
