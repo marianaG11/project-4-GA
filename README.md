@@ -11,10 +11,10 @@
 ![signinpage](/public/images/signin.png)
 
 ### Home Page
-![homepage](/public/images/homepage.png)
+![homepage](/public/images/feed.png)
 
 ### Profile Page
-![profilepage](/public/images/profilepage.png)
+![profilepage](/public/images/profile.png)
 
 ## Technologies Used 
 * React
