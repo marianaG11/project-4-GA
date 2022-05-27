@@ -9,7 +9,7 @@ function Workout({ workout, isProfile, removeLike, addLike, user }) {
   const likeIndex = workout.likes.findIndex(
     (like) => like.userId === user._id
   );
-    console.log(user)
+    // console.log(user)
   // call the addLike or the removeLike when user clicks on the heart icon
   const clickHandler =
     likeIndex > -1 //if findIndex doesn't find an index of the liked object in the workout.likes array, it'll return a -1

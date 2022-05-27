@@ -33,7 +33,7 @@ export default function WorkoutDetailsPage({user, handleLogout, workoutId, comme
     async function getComments(){
         try {
             const data = await commentsAPI.getAll();
-            console.log(data, "this is data from getComments")
+            // console.log(data, "this is data from getComments")
             setComments([data]);
             setLoading(false);
         } catch(err){

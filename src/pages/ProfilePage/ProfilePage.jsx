@@ -23,7 +23,7 @@ export default function ProfilePage(props){
   async function getProfile() {
     try {
       const data = await userService.getProfile(username);
-      console.log(data, "this is the data");
+      // console.log(data, "this is the data");
       setLoading(() => false);
       setUser(() => data.user);
       setWorkouts(() => data.workouts);
@@ -43,7 +43,7 @@ export default function ProfilePage(props){
   async function addLike(workoutId){
     try {
       const data = await likesAPI.create(workoutId)
-      console.log(data, ' <- the response from the server when we make a like');
+      // console.log(data, ' <- the response from the server when we make a like');
       getProfile(); // <- to go get the updated workouts with the like
     } catch(err){
       console.log(err)
@@ -54,7 +54,7 @@ export default function ProfilePage(props){
   async function removeLike(likeId){
     try {
       const data = await likesAPI.removeLike(likeId);
-      console.log(data, '<-  this is the response from the server when we remove a like')
+      // console.log(data, '<-  this is the response from the server when we remove a like')
       getProfile()
       
     } catch(err){

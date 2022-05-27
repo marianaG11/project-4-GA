@@ -12,7 +12,7 @@ import CommentsDisplay from '../../components/CommentsDisplay.jsx/CommentsDispla
 
 export default function Home({user, handleLogout}){
   const [workouts, setWorkouts] = useState([]);
-  console.log(workoutsAPI, 'this is workoutsAPI');
+  // console.log(workoutsAPI, 'this is workoutsAPI');
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -21,7 +21,7 @@ export default function Home({user, handleLogout}){
   async function addLike(workoutId){
     try {
       const data = await likesAPI.create(workoutId)
-      console.log(data, 'response from the server when we make a like');
+      // console.log(data, 'response from the server when we make a like');
       getWorkouts(); // gets updated workouts w/ likes; fetches the updated docs from DB
     } catch(err){
       console.log(err)
@@ -32,7 +32,7 @@ export default function Home({user, handleLogout}){
   async function removeLike(likeId){
     try {
       const data = await likesAPI.removeLike(likeId);
-      console.log(data, 'response from the server when we remove a like')
+      // console.log(data, 'response from the server when we remove a like')
       getWorkouts();
       
     } catch(err){
@@ -68,7 +68,7 @@ export default function Home({user, handleLogout}){
   async function getWorkouts() {
     try {
       const data = await workoutsAPI.getAll();
-      console.log(data, " this is data,");
+      // console.log(data, " this is data,");
       setWorkouts([...data.workouts]);
       setLoading(false);
     } catch (err) {

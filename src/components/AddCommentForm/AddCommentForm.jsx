@@ -39,7 +39,7 @@ export default function AddCommentForm(props, workoutId, handleAddComment, comme
             comment: state.comment,
             workoutId: workoutId,
         })
-        console.log(comment, 'in addCommentForm in handleSubmit')
+        // console.log(comment, 'in addCommentForm in handleSubmit')
         // const formData = new FormData();
         // formData.append('comment', state.comment)
         // const comment = new Comment()
