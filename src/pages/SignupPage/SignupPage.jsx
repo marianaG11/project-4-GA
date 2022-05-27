@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Segment, Message } from 'semantic-ui-react'
 import userService from "../../utils/userService"; //to make the sign up request
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-
+import './SignupPage.css';
 export default function SignUpPage(props) {
   const [selectedFile, setSelectedFile] = useState('');
   const navigate = useNavigate();
@@ -63,11 +63,12 @@ export default function SignUpPage(props) {
 
   
   return (
-    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
-   <Grid.Column style={{ maxWidth: 450 }}>
-     <Header as="h2" color="red" textAlign="center">
+  
+    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle" className="Grid-login">
+   <Grid.Column style={{ maxWidth: 450 }} className="grid-signup">
+     <Header as="h2" color="black" textAlign="center" className="header-signup">
       Start Tracking Your Workouts With Daily
-       <Image src="https://www.kindpng.com/picc/m/107-1079056_calendar-png-vector-circle-calendar-icon-png-transparent.png" /> 
+       <Image src="https://www.freepnglogos.com/uploads/dumbbell/dumbbell-barbell-clip-art-etsy-23.jpg" /> 
      </Header>
      <Form autoComplete="off" onSubmit={handleSubmit}>
        <Segment stacked>
@@ -115,9 +116,12 @@ export default function SignUpPage(props) {
              onChange={handleFileInput}
            />
          </Form.Field>
-         <Button type="submit" className="btn" color="red">
+         <Button type="submit" className="btn" color="black">
            Signup
          </Button>
+         <Message>
+            Already have an account? <Link to="/login">Sign In</Link>
+          </Message>
        </Segment>
        {error ? <ErrorMessage error={error} /> : null}
      </Form>

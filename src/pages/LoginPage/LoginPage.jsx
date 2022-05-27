@@ -44,9 +44,12 @@ export default function LoginPage(props) {
        
         verticalAlign="middle"
       >
-        <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as="h2" color="red" textAlign="center">
-            <Image src="https://www.kindpng.com/picc/m/107-1079056_calendar-png-vector-circle-calendar-icon-png-transparent.png"/> Log-in to your
+        <Grid.Column style={{ maxWidth: 450 }} className="grid-login">
+          <Header as="h2" color="black" textAlign="center">
+           <div>
+              Daily
+            </div>
+            <Image src="https://www.freepnglogos.com/uploads/dumbbell/dumbbell-barbell-clip-art-etsy-23.jpg"/> Sign in to your
             account
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -68,7 +71,7 @@ export default function LoginPage(props) {
                 required
               />
               <Button
-                color="red"
+                color="black"
                 fluid
                 size="large"
                 type="submit"

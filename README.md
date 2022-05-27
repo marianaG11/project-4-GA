@@ -1,37 +1,36 @@
-## Setup 
+# Daily
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+## About The App
+#### Daily is an app where users can track their workouts and upload photos they took that day. The user has a profile page where all of their workouts will show, but they can also view other users' workouts. The goal of the app is to help users stay organized but also share their workouts!
 
+## App Images
+### Sign Up Page
+![signuppage](/public/images/signuppage.png)
 
-#### Setup your git repo
+### Sign In Page
+![signinpage](/public/images/signin.png)
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2. Then you can run the following commands in the root of your project 
+### Home Page
+![homepage](/public/images/homepage.png)
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be, look at the address in the code github gives you!
-git push -u origin main
-```
+### Profile Page
+![profilepage](/public/images/profilepage.png)
 
-#### Setup the App
+## Technologies Used 
+* React
+* JSX
+* JavaScript
+* MongoDB
 
-```npm install```
+## Getting Started
+[Launch the app!](https://dailyworkouts.herokuapp.com/)
 
-*DOTENV*
+## project Planning
+### [Trello-Board](https://trello.com/b/QiHteOSt/project-4-workouttracker)
 
-`touch .env`
+### ERD
+![ERD](/public/images/ERD.png)
 
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+### Next Steps (Icebox Items)
+* Add comment functionality
+* Use Spotify Api to allow users to share their playlists

@@ -1,20 +1,11 @@
-// import React, {useState} from 'react';
-
-// const FormInput = (props) => {
-//     return (
-//         <div className="formInput">
-//             <label>Comment</label>
-//             <input placeholder={props.placeholder} onChange={e=/>
-//         </div>
-//     )
-// }
 
 import React, { useState } from 'react';
 import { Button, Comment, Form, Header } from 'semantic-ui-react';
+import * as commentsAPI from "../../utils/commentsApi";
 
 
-export default function AddCommentForm(props, workoutId){
-    const [body, setBody] = useState('');
+export default function AddCommentForm(props, workoutId, handleAddComment, comment){
+    // const [body, setBody] = useState('');
     const [state, setState] = useState({
         comment:'',
         // username: '', //is this needed
@@ -28,13 +19,47 @@ export default function AddCommentForm(props, workoutId){
         })
     };
  
+    
+    async function handleAddComment(comment){
+        try{
+            await commentsAPI.create(comment)
+            
+        }catch(err){
+            console.log(err, 'from handleAddComment')
+        }
+    }
+
+
+
+
     function handleSubmit(e){
         e.preventDefault()
-        const comment = new Comment()
-        comment.append('body', state.comment)
-        props.handleAddComment(workoutId);
-    };
- 
+        // const comment = props.handleAddComment(comment)
+        handleAddComment({
+            comment: state.comment,
+            workoutId: workoutId,
+        })
+        console.log(comment, 'in addCommentForm in handleSubmit')
+        // const formData = new FormData();
+        // formData.append('comment', state.comment)
+        // const comment = new Comment()
+        // comment.append('body', state.comment)
+        // props.handleAddComment(workoutId);
+    /////
+    // function handleSubmit(e) {
+    //     e.preventDefault();
+    //     const newComment = props.handleAddComment(commentToBeAdded)
+    //     }
+
+    //     function handleSubmit(e){
+    //         e.preventDefault()
+    //         handleAddComment({
+    //             comment: state.comment,
+    //             postId: postId,
+    //     })
+    }
+
+
     return (
     <Form reply autoComplete="off" onSubmit={handleSubmit}>
       <Form.TextArea
@@ -50,22 +75,3 @@ export default function AddCommentForm(props, workoutId){
 
     );
 };
-
-
-// let formData = new FormData();    //formdata object
-
-// formData.append('name', 'ABC');   //append the values with key, value pair
-// formData.append('age', 20);
-
-// const config = {     //dont include
-//     headers: { 'content-type': 'multipart/form-data' }
-// }
-
-//not needed
-// axios.post(url, formData, config)
-//     .then(response => {
-//         console.log(response);
-//     })
-//     .catch(error => {
-//         console.log(error);
-//     });

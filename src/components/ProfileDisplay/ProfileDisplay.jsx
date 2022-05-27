@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, Grid, Segment } from "semantic-ui-react";
-
+import './ProfileDisplay.css';
 
 //pass in the user's info as a prop to render it out 
 function ProfileAbout({ user }) {
