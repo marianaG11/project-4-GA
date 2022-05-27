@@ -64,7 +64,7 @@ export default function SignUpPage(props) {
   
   return (
   
-    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle" className="Grid-login">
+    <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle" className="grid-login">
    <Grid.Column style={{ maxWidth: 450 }} className="grid-signup">
      <Header as="h2" color="black" textAlign="center" className="header-signup">
       Start Tracking Your Workouts With Daily

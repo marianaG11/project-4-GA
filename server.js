@@ -23,6 +23,7 @@ app.use(express.static(path.join(__dirname, "build"))); // this allows express t
 app.use(require("./config/auth"));
 // api routes must be before the "catch all" route
 
+// /api should all be diff
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/workouts", require("./routes/api/workouts"));
 app.use("/api", require("./routes/api/likes"));

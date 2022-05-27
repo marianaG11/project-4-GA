@@ -39,12 +39,12 @@ export default function LoginPage(props) {
 
   return (
     <>
-      <Grid
+      <Grid 
         textAlign="center"
-       
+        className="grid-login"
         verticalAlign="middle"
       >
-        <Grid.Column style={{ maxWidth: 450 }} className="grid-login">
+        <Grid.Column style={{ maxWidth: 450 }} className="login-page-column">
           <Header as="h2" color="black" textAlign="center">
            <div>
               Daily
